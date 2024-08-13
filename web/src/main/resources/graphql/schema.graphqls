@@ -1,0 +1,39 @@
+type Query {
+    """
+    Get book by ID.
+    errors: NotFound
+    """
+    bookById(id: Int!): Book!
+
+    """
+    Get books.
+    errors:
+    """
+    books(filter: BookFilter!): [Book!]!
+}
+
+type Mutation {
+    """
+    Add author. returns author ID.
+    errors: InvalidRequest
+    """
+    addAuthor(firstName: String!, lastName: String!): Int!
+}
+
+type Book {
+    id: Int!
+    name: String!
+    pageCount: Int!
+    author: Author!
+}
+
+type Author {
+    id: Int!
+    firstName: String!
+    lastName: String!
+}
+
+input BookFilter {
+    name: String
+    pageCount: Int
+}

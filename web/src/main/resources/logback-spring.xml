@@ -1,0 +1,14 @@
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <charset>utf-8</charset>
+      <pattern>[%date{ISO8601}] [%level] [%logger] [%thread] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <springProfile name="default | production">
+    <root level="INFO">
+      <appender-ref ref="STDOUT"/>
+    </root>
+  </springProfile>
+</configuration>
